@@ -14,12 +14,18 @@
   flex: 0 0 100%;
   min-width: 0;
 }
+.embla__prev i, .embla__next i {
+  border: 1px #015A82 solid;
+}
+.embla__prev i.bg, .embla__next i.bg {
+  background-color: #015A82;
+}
 .btnFiltre {
-  background-color: #FA9D4F !important;
+  background-color: #015A82 !important;
   transition: all .3s ease;
 }
 .btnFiltre:hover {
-  background-color: #EFB98A !important;
+  background-color: #64C4EE !important;
   color: #000 !important;
 }
 .logo {

@@ -64,16 +64,16 @@ function People(props) {
             <div className='flex justify-center my-3 inset-x-0 bottom-0'>
               <div className="embla__prev bg-transparent cursor-pointer mx-2" id='left' onClick={scrollPrev}>
                 {(slide) ? (
-                  <i className="block w-2 h-2 rounded-full bg-blue-500 border border-blue-500"></i>
+                  <i className="block w-2 h-2 rounded-full bg"></i>
                 ) : (
-                  <i className="block w-2 h-2 rounded-full border border-blue-500"></i>
+                  <i className="block w-2 h-2 rounded-full"></i>
                 )}
               </div>
               <div className="embla__next bg-transparent cursor-pointer mx-2" id='right' onClick={scrollNext}>
                 {(slide) ? (
-                  <i className="block w-2 h-2 rounded-full border border-blue-500"></i>
+                  <i className="block w-2 h-2 rounded-full"></i>
                 ) : (
-                  <i className="block w-2 h-2 rounded-full border border-blue-500 bg-blue-500"></i>
+                  <i className="block w-2 h-2 rounded-full bg"></i>
                 )}
               </div>
             </div>

@@ -151,10 +151,10 @@ function App() {
     <>
       <div className='bg-gray-50 shadow-lg shadow-gray-600 w-full'>
         {/* Navigation */}
-        <nav className="p-2 bg-white">
-          <div className='flex justify-between py-2 flex-wrap'>
-            <div className="text-gray-900 text-start pe-4 mb-5">
-              <a href='#'><img src={logo} alt="Logo du K-Guide" className='w-56' /></a>
+        <header className="px-2 pt-2" style={{backgroundColor: "#F7F7F7"}}>
+          <div className='flex justify-between flex-wrap'>
+            <div className="text-gray-900 text-start pe-4 mb-2">
+              <a href='#'><img src={logo} alt="Logo du K-People" className='w-56' /></a>
             </div>
             <div className="text-black hover:text-gray-500 text-end px-4 cursor-pointer" onClick={sliderRecherche}>
               <span id='rechercheAvance'> Recherche avancée </span><i className="fa-solid fa-angle-up"></i>
@@ -196,13 +196,13 @@ function App() {
                 <option value="AL">Allemagne</option>
               </select>
             </div>
-            <div className="justify-items-center border-t border-r border-b border-blue-lighter rounded-r text-blue-dark lg:col-span-1 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
+            <div className="col-span-1 justify-items-center border-t border-r border-b border-blue-lighter rounded-r text-blue-dark lg:col-span-1 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
               <button type="button" className="btnFiltre text-white w-full h-full font-semibold rounded-s-none rounded-e-md border disabled:opacity-50 disabled:pointer-events-none lg:rounded-s-none md:rounded-s-md sm:rounded-s-md xs:rounded-s-md">
                 Filtrer
               </button>
             </div>
           </div>
-        </nav>
+        </header>
 
         {/* Card */}
         <div className="grid grid-cols-4 gap-2 place-items-stretch justify-items-stretch px-1 py-2 bg-slate-100 lg:grid-cols-4 lg:gap-2 md:grid-cols-3 md:gap-2 sm:grid-cols-2 xs:grid-cols-1 xs:justify-items-center">
