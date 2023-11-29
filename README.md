@@ -1,4 +1,4 @@
-# React + Vite
+# K-People
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -11,4 +11,4 @@ Currently, two official plugins are available:
 
 ## Utiliser `npm run dev` pour lancer le serveur.
 
-**Fait par [Hindra98](https://github.com/Hindra98)**
+## **Fait par [Hindra98](https://github.com/Hindra98)**
