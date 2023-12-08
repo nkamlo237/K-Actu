@@ -22,11 +22,29 @@
 }
 .btnFiltre {
   background-color: #015A82 !important;
+  outline: none !important;
   transition: all .3s ease;
+  border: none;
 }
 .btnFiltre:hover {
   background-color: #64C4EE !important;
-  color: #000 !important;
+}
+.btnk {
+  background-color: #FFF !important;
+  color: #015A82 !important;
+  border: 1px #015A82 solid;
+  transition: all .3s ease;
+}
+.btnk:hover {
+  background-color: #015A82 !important;
+  color: #FFF !important;
+}
+#searchBar input[type="search"], #searchBar select {
+  outline-color: #015A82;
+}
+#searchBar select option:hover {
+  background-color: #015A82 !important;
+  color: #015A82;
 }
 .logo {
   height: 6em;
@@ -62,4 +80,80 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+
+/*Styling Selectbox*/
+
+.dropdown {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgb(204, 204, 204);
+  transition: all .5s ease;
+  position: relative;
+  font-size: 14px;
+  color: #474747;
+  height: 100%;
+  text-align: left
+}
+.dropdown .select {
+    cursor: pointer;
+    display: block;
+    padding: 10px
+}
+.dropdown .select > i {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    float: right;
+    line-height: 20px
+}
+.dropdown:hover {
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+.dropdown:active {
+    background-color: #f8f8f8
+}
+.dropdown.active:hover,
+.dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 2px 2px 0 0;
+    background-color: #f8f8f8
+}
+.dropdown .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    margin-top: 1px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 2px 2px;
+    overflow: hidden;
+    display: none;
+    max-height: 144px;
+    overflow-y: auto;
+    z-index: 9
+}
+.dropdown .dropdown-menu li {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+    transition: all .2s ease-in-out;
+    cursor: pointer
+} 
+.dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none
+}
+.dropdown .dropdown-menu li:hover {
+    background-color: #015A82;
+    color: #fff;
+}
+.dropdown .dropdown-menu li:active {
+    background-color: #015A82;
+    color: #fff;
 }

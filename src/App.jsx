@@ -1,20 +1,57 @@
-// import { useEffect } from 'react'
+
+import { useEffect, useState } from 'react';
 import People from './composants/People';
-import logo from './assets/logo.jpg'
+import logo from './assets/logo_kpeople.png'
 import './App.css'
 import $ from 'jquery';
 window.$ = $;
 
 function App() {
 
+  const [selP, setSel] = useState('')
+  const [selV, setVSel] = useState('')
+  const [selA, setASel] = useState('')
+  const [selM, setMSel] = useState('')
+
+  const handleChoice = ((value) => {
+    if (value == 0) setSel(selM);
+    if (value == 1) setVSel(selM);
+    if (value == 2) setASel(selM);
+  })
+
+  useEffect(() => {
+
+    $(function () {
+
+      /*Dropdown Menu*/
+      $('.dropdown').on('click', function () {
+        $(this).attr('tabindex', 1).triggerHandler("focus");
+        $(this).toggleClass('active');
+        $(this).find('.dropdown-menu').slideDown(300);
+      }).on('focusout', function () {
+        $(this).removeClass('active');
+        $(this).find('.dropdown-menu').slideUp(300);
+      });
+
+      $('.dropdown .dropdown-menu li').on('click', function () {
+        $(this).parents('.dropdown').find('span').text($(this).text());
+        $(this).find('.dropdown-menu').slideUp(300);
+        setMSel($(this).attr('value'));
+      });
+
+    });
+
+  }, []);
+
+
   const sliderRecherche = (() => {
-    if ($("#rechercheAvance + i").hasClass("fa-solid fa-angle-up")) {
-      $("#rechercheAvance + i").removeClass('fa-solid fa-angle-up').addClass("fa-solid fa-angle-down");
-      $("#searchBar").slideUp("slow");
+    if ($("#rechercheAvance + i").hasClass("fa-solid fa-square-caret-up")) {
+      $("#rechercheAvance + i").removeClass('fa-solid fa-square-caret-up').addClass("fa-solid fa-square-caret-down");
+      $("#searchBar").slideUp("fast");
     }
     else {
-      $("#rechercheAvance + i").removeClass('fa-solid fa-angle-down').addClass("fa-solid fa-angle-up");
-      $("#searchBar").slideDown("slow");
+      $("#rechercheAvance + i").removeClass('fa-solid fa-square-caret-down').addClass("fa-solid fa-square-caret-up");
+      $("#searchBar").slideDown("fast");
     }
   });
 
@@ -149,52 +186,71 @@ function App() {
 
   return (
     <>
-      <div className='bg-gray-50 shadow-lg shadow-gray-600 w-full'>
+      <div className='bg-gray-50 shadow-lg shadow-gray-600 w-full' style={{ backgroundColor: "#F7F7F7" }}>
         {/* Navigation */}
-        <header className="px-2 pt-2" style={{backgroundColor: "#F7F7F7"}}>
+        <header className="p-2" style={{backgroundColor: "#fff"}}>
           <div className='flex justify-between flex-wrap'>
             <div className="text-gray-900 text-start pe-4 mb-2">
               <a href='#'><img src={logo} alt="Logo du K-People" className='w-56' /></a>
             </div>
-            <div className="text-black hover:text-gray-500 text-end px-4 cursor-pointer" onClick={sliderRecherche}>
-              <span id='rechercheAvance'> Recherche avancée </span><i className="fa-solid fa-angle-up"></i>
+            <div className="text-black hover:text-gray-500 text-end px-4 pt-2 cursor-pointer" onClick={sliderRecherche}>
+              <span id='rechercheAvance'> Recherche avancée </span><i className="fa-solid fa-square-caret-down"></i>
             </div>
           </div>
 
-          <div id='searchBar' className="grid grid-cols-12 p-4 bg-gray-200 rounded-md lg:grid-cols-12 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1">
+          <div id='searchBar' style={{ display: "none" }} className="grid grid-cols-12 px-2 py-1 bg-gray-200 rounded-md lg:grid-cols-12 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1">
             <div className="col-span-5 text-md border border-blue-lighter lg:col-span-5 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
-              <i className="fa-solid fa-magnifying-glass px-3 py-4 absolute"></i>
+              <i className="fa-solid fa-magnifying-glass px-3 py-4 absolute" style={{color: "#015A82"}}></i>
               <input type="search" placeholder="Rechercher des entreprises" className="py-3 pl-10 pr-3 text-md border-transparent w-full h-full bg-gray-100 lg:rounded-e-none md:rounded-md sm:rounded-md xs:rounded-md" />
             </div>
+
             <div className="col-span-2 border-t border-b border-r border-blue-lighter text-blue-dark lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
-              <select className="bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md md:py-2 sm:py-2 xs:py-2">
-                <option selected disabled>Selectionner un pays</option>
-                <option value="CMR">Cameroun</option>
-                <option value="US">Etats Unis</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Allemagne</option>
-              </select>
+
+              <div onClick={() => handleChoice(0)} className="dropdown bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md">
+                <div className="select">
+                  <span className='overflow-hidden'>Pays</span>
+                  <i className="fa-solid fa-angle-down"></i>
+                  <input type="hidden" id="pays" />
+                </div>
+                <ul className="dropdown-menu">
+                  <li value="cmr">Cameroun</li>
+                  <li value="us">Etats Unis</li>
+                  <li value="cmr">France</li>
+                  <li value="us">Canada</li>
+                </ul>
+              </div>
             </div>
             <div className="col-span-2 border-t border-b border-r border-blue-lighter text-blue-dark lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
-              <select className="bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md md:py-2 sm:py-2 xs:py-2">
-                <option selected disabled>Selectionner une ville</option>
-                <option value="KR">Kribi</option>
-                <option value="DO">Douala</option>
-                <option value="NY">New York</option>
-                <option value="PA">Paris</option>
-                <option value="BE">Berlin</option>
-              </select>
+              <div onClick={() => handleChoice(1)} className="dropdown bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md">
+                <div className="select">
+                  <span>Ville</span>
+                  <i className="fa-solid fa-angle-down"></i>
+                <input type="hidden" id="ville" />
+                </div>
+                <ul className="dropdown-menu">
+                  <li value="kr">Kribi</li>
+                  <li value="do">Douala</li>
+                  <li value="ny">New York</li>
+                  <li value="pa">Paris</li>
+                  <li value="pa">Berlin</li>
+                </ul>
+              </div>
             </div>
             <div className="col-span-2 border-t border-b border-r border-blue-lighter text-blue-dark lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
-              <select className="bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md md:py-2 sm:py-2 xs:py-2">
-                <option selected disabled>Secteur d'activité</option>
-                <option value="TE">Tech</option>
-                <option value="BE">Beauté</option>
-                <option value="AU">Automobile</option>
-                <option value="EN">Enseignement</option>
-                <option value="AL">Allemagne</option>
-              </select>
+              <div onClick={() => handleChoice(2)} className="dropdown bg-gray-100 border-transparent px-1 text-gray-900 w-full h-full lg:rounded-none md:rounded-md sm:rounded-md xs:rounded-md">
+                <div className="select">
+                  <span>Activité</span>
+                  <i className="fa-solid fa-angle-down"></i>
+                <input type="hidden" id="activite" />
+                </div>
+                <ul className="dropdown-menu">
+                  <li value="te">Tech</li>
+                  <li value="be">Beauté</li>
+                  <li value="au">Automobile</li>
+                  <li value="en">Enseignement</li>
+                  <li value="pa">Berlin</li>
+                </ul>
+              </div>
             </div>
             <div className="col-span-1 justify-items-center border-t border-r border-b border-blue-lighter rounded-r text-blue-dark lg:col-span-1 md:col-span-1 sm:col-span-1 xs:col-span-1 my-1">
               <button type="button" className="btnFiltre text-white w-full h-full font-semibold rounded-s-none rounded-e-md border disabled:opacity-50 disabled:pointer-events-none lg:rounded-s-none md:rounded-s-md sm:rounded-s-md xs:rounded-s-md">
@@ -205,7 +261,7 @@ function App() {
         </header>
 
         {/* Card */}
-        <div className="grid grid-cols-4 gap-2 place-items-stretch justify-items-stretch px-1 py-2 bg-slate-100 lg:grid-cols-4 lg:gap-2 md:grid-cols-3 md:gap-2 sm:grid-cols-2 xs:grid-cols-1 xs:justify-items-center">
+        <div className="mx-2 pt-3 pb-4 grid grid-cols-4 gap-3 place-items-stretch justify-items-stretch px-1 bg-slate-100 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 xs:justify-items-center">
           {data.map((entreprise, index) => {
             return (
               <People key={index} nom={entreprise.nom} pays={entreprise.pays} ville={entreprise.ville} article={entreprise.article} abonne={entreprise.abonne} rating={entreprise.rating} activite={entreprise.activite} desc={entreprise.desc} />
