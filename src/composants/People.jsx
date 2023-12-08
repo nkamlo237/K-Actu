@@ -36,7 +36,7 @@ function People(props) {
               <div className="embla__slide">
                 <img className="rounded-t-lg h-36" src={cover} alt="" />
                 <div className="">
-                  <img className="w-1/3 inline-block -mt-12 mb-2 border-2 border-white rounded-full" src={profil} alt="" />
+                  <img className="w-1/3 inline-block -mt-12 mb-2 rounded-full" src={profil} alt="" />
                   <h5 className="px-2 text-lg capitalize font-bold text-gray-800 overflow-x-hidden"> {props.nom} </h5>
                   <h5 className="mb-1 tracking-tight text-gray-800 capitalize overflow-x-clip">{props.pays}, {props.ville}</h5>
                   <a href="#" className="btnk my-3 inline-flex items-center gap-1 rounded-full px-2 py-1 text-sm font-medium">
