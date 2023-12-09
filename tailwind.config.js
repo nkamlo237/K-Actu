@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#f07000",
+        secondary: "#005a81",
+        dark: {
+          light: "#5A7184",
+          hard: "#0D2436",
+          soft: "#183B56"
+        }
+    },
     screens: {
       'xs': '320px',
       // => @media (min-width: 320px) { ... }
@@ -27,5 +36,5 @@ export default {
     },
   },
   plugins: [],
-}
+}}
 

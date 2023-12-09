@@ -1,0 +1,20 @@
+.custom-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+    transform: translateX(-50%);
+    color: white;
+    margin-left: 30px;
+    text-align: left;
+  }
+  
+  .custom-legend-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .custom-legend-description {
+    font-size: 16px;
+    font-weight: 500;
+  }
